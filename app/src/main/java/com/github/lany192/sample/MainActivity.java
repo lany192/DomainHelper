@@ -1,12 +1,11 @@
 package com.github.lany192.sample;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -29,10 +28,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText mUrl3;
     private EditText mGlobalUrl;
 
+    private TextView mShowText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mShowText = findViewById(R.id.my_text_view);
         mUrl1 = (EditText) findViewById(R.id.et_url1);
         mUrl2 = (EditText) findViewById(R.id.et_url2);
         mUrl3 = (EditText) findViewById(R.id.et_url3);
@@ -86,26 +88,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void showResult(String result) {
-        new AlertDialog.Builder(this)
-                .setMessage(result)
-                .setCancelable(true)
-                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .create()
-                .show();
     }
 
     // 请求默认 BaseUrl，请求的接口没有配置 DomainHeader，所以只受全局 BaseUrl的影响
@@ -170,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     String string = response.string();
                     Log.d("test", string);
-                    showResult(string);
+                    mShowText.setText("" + string);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -179,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onError(Throwable throwable) {
                 throwable.printStackTrace();
-                showResult(throwable.getMessage());
+                mShowText.setText("" + throwable.getMessage());
             }
 
             @Override
