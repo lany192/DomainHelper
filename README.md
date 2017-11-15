@@ -1,0 +1,2 @@
+# DomainHelper
+init
