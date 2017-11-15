@@ -1,7 +1,7 @@
 package com.github.lany192.sample;
 
 public interface DomainConfig {
-    String BASE_URL = "http://jessyan.me";
+    String BASE_URL = "https://lany192.github.io";
 
     String APP_GETHUB_DOMAIN = "https://api.github.com";
     String APP_GANK_DOMAIN = "http://gank.io";
