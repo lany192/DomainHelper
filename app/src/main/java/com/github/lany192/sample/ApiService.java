@@ -16,15 +16,15 @@ public interface ApiService {
     @GET("/json/demo2.json")
     Observable<ResponseBody> requestDefault();
 
-    @Headers({DomainConfig.HEADER_1})
+    @Headers(DomainConfig.HEADER_1)
     @GET("/users")
     Observable<ResponseBody> getUsers(@Query("since") int since, @Query("per_page") int perPage);
 
-    @Headers({DomainConfig.HEADER_2})
+    @Headers(DomainConfig.HEADER_2)
     @GET("/api/data/Android/{size}/{page}")
     Observable<ResponseBody> getData(@Path("size") int size, @Path("page") int page);
 
-    @Headers({DomainConfig.HEADER_3})
+    @Headers(DomainConfig.HEADER_3)
     @GET("/v2/book/{id}")
     Observable<ResponseBody> getBook(@Path("id") int id);
 }

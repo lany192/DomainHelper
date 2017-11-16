@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mShowText = findViewById(R.id.my_text_view);
-        mUrl1 = (EditText) findViewById(R.id.et_url1);
-        mUrl2 = (EditText) findViewById(R.id.et_url2);
-        mUrl3 = (EditText) findViewById(R.id.et_url3);
-        mGlobalUrl = (EditText) findViewById(R.id.et_global_url);
+        mUrl1 = findViewById(R.id.et_url1);
+        mUrl2 = findViewById(R.id.et_url2);
+        mUrl3 = findViewById(R.id.et_url3);
+        mGlobalUrl = findViewById(R.id.et_global_url);
         mUrl1.setSelection(mUrl1.getText().toString().length());
         findViewById(R.id.bt_request1).setOnClickListener(new View.OnClickListener() {
             @Override
